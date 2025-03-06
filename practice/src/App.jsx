@@ -1,12 +1,9 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import "./App.css";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Product } from "./Pages/Product";
 import { LoginSignup } from "./Pages/LoginSignup";
-import { Shop } from "./Pages/Shop";
+import { Shop } from "./Pages/shop";
 import { ShopCategory } from "./Pages/ShopCategory";
 import { Cart } from "./Pages/Cart";
 

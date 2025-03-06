@@ -10,7 +10,7 @@ export const Navbar = () => {
     <div className="navbar">
       <div className="navbar__left">
         <img src={shop} alt="shop" />
-        <h1>jims</h1>
+        <h1>JIMS</h1>
       </div>
       <ul className="nav-menu">
         <li
@@ -18,7 +18,7 @@ export const Navbar = () => {
             setMenu("shop");
           }}
         >
-          <Link to="/">Shop</Link>
+          <Link style={{textDecoration:'none'}} to="/">Shop</Link>
           {menu === "shop" ? <hr /> : null}
         </li>
         <li
@@ -26,7 +26,7 @@ export const Navbar = () => {
             setMenu("wigs");
           }}
         >
-          <Link to="/wigs">Wigs</Link>
+          <Link style= {{textDecoration:'none'}} to="/wigs">Wigs</Link>
           {menu === "wigs" ? <hr /> : null}
         </li>
         <li
@@ -34,13 +34,17 @@ export const Navbar = () => {
             setMenu("hair accessories");
           }}
         >
-          <Link to="/hair-accessories">Hair accessories</Link>
+          <Link style= {{textDecoration:'none'}} to="/hair-accessories">Hair accessories</Link>
           {menu === "hair accessories" ? <hr /> : null}
         </li>
       </ul>
       <div className="nav-login-cart">
-        <button>Login</button>
-        <img src={cart} alt="cart" /> {/* Correct path for the cart image */}
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
+        <Link to="/cart">
+          <img src={cart} alt="cart" />
+        </Link>
         <div className="nav-cart-count">0</div>
       </div>
     </div>
