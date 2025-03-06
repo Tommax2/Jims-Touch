@@ -1,19 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
 
-import './App.css'
-import { Navbar } from './Components/Navbar/Navbar'
+import "./App.css";
+import { Navbar } from "./Components/Navbar/Navbar";
 
 function App() {
-  
-
   return (
     <>
       <div>
         <Navbar />
-       </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
