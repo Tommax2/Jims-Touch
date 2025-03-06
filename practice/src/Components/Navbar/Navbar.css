@@ -55,3 +55,47 @@
 .nav-menu li:hover .logo{
     filter: drop-shadow(0 0 2em #646cffaa);
 }
+.nav-login-cart{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.nav-login-cart img{
+    height: 30px;
+}
+.nav-login-cart button{
+    border: 1px solid #7a7a7a;
+    background: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: #171717;
+    border-radius: 75px;
+    padding: 10px 20px;
+    background: white;
+}
+.nav-login-cart button:hover{
+    background: #dbc9ca;
+    color: white;
+}
+.nav-login-cart button:focus{
+    border: 1px solid #ff414f;
+}
+.nav-login-cart button:focus-visible{
+    outline: 4px auto -webkit-focus-ring-color;
+}
+.nav-cart-count{
+    width:22px ;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -35px;
+    margin-left: -55px;
+    border-radius: 11px;
+    font-size: 14px;
+    background:red ;
+color: white;
+
+}

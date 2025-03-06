@@ -1,14 +1,34 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import "./App.css";
 import { Navbar } from "./Components/Navbar/Navbar";
+import { Product } from "./Pages/Product";
+import { LoginSignup } from "./Pages/LoginSignup";
+import { Shop } from "./Pages/Shop";
+import { ShopCategory } from "./Pages/ShopCategory";
+import { Cart } from "./Pages/Cart";
 
 function App() {
   return (
     <>
       <div>
-        <Navbar />
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Shop />} />
+            <Route path="/wigs" element={<ShopCategory category="wigs" />} />
+            <Route
+              path="/hair-accessories"
+              element={<ShopCategory category="hair accessories" />}
+            />
+            <Route path="/product" element={<Product />} />
+            <Route path="/product/:productId" element={<Product />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<LoginSignup />} />
+          </Routes>
+        </Router>
       </div>
     </>
   );
