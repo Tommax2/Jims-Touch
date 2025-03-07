@@ -1,0 +1,63 @@
+.hero{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url('../../assets/logo.jpg'); */ /* Removed background image */
+}
+.hero-left{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-left: 180px;
+    height: 1.1;
+}
+.hero-left h1{
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: black; /* Changed text color to black */
+}
+.hero-left p{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: black; /* Changed text color to black */
+}
+.jims-touch {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff414f; /* Added new styles for Jim's Touch */
+}
+.product-description {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: black; /* Added new styles for product description */
+    text-align: center;
+    max-width: 600px;
+}
+.hero-hand-icon{
+    display: flex;
+    justify-content: center;
+    gap: 20px;    
+}
+.hero-hand-icon img{
+    height: 50px;
+}
+.hero-latest-btn{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 310px;
+    height: 70px;
+    border-radius: 75px;
+    margin-top: 30px;
+    background: #ff414f;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}

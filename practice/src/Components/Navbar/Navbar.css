@@ -1,41 +1,45 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-around;
     padding: 16px;
-    box-shadow: 0 1px 3px -2px black ;
-
-
+    box-shadow: 0 1px 3px -2px black;
 }
-.navbar__left{
+
+.navbar__left {
     display: flex;
     align-items: center;
     gap: 10px;
 }
-.navbar__left h1{
+
+.navbar__left h1 {
     font-size: 2.5rem;
     font-weight: 600;
     color: #171717;
 }
-.navbar__left img{
+
+.navbar__left img {
     height: 50px;
 }
-.nav-menu{
+
+.nav-menu {
     display: flex;
     align-items: center;
     gap: 50px;
-    list-style:  none;
+    list-style: none;
     color: #171717;
     font-size: 20px;
 }
-.nav-menu li{
+
+.nav-menu li {
     font-size: 1.2rem;
     font-weight: 500;
     cursor: pointer;
     display: column;
     align-items: center;
     justify-content: center;
-}   
-.nav-menu hr{
+}
+
+.nav-menu hr {
     width: 80%;
     height: 3px;
     background: #ff414f;
@@ -43,27 +47,33 @@
     border: none;
 }
 
-.nav-menu li:hover{
+.nav-menu li:hover {
     color: #646cff;
 }
-.nav-menu li.active{
+
+.nav-menu li.active {
     color: #646cff;
 }
-.nav-menu li.active:hover{
+
+.nav-menu li.active:hover {
     color: #535bf2;
 }
-.nav-menu li:hover .logo{
+
+.nav-menu li:hover .logo {
     filter: drop-shadow(0 0 2em #646cffaa);
 }
-.nav-login-cart{
+
+.nav-login-cart {
     display: flex;
     align-items: center;
     gap: 50px;
 }
-.nav-login-cart img{
+
+.nav-login-cart img {
     height: 30px;
 }
-.nav-login-cart button{
+
+.nav-login-cart button {
     border: 1px solid #7a7a7a;
     background: none;
     outline: none;
@@ -75,18 +85,22 @@
     padding: 10px 20px;
     background: white;
 }
-.nav-login-cart button:hover{
+
+.nav-login-cart button:hover {
     background: #dbc9ca;
     color: white;
 }
-.nav-login-cart button:focus{
+
+.nav-login-cart button:focus {
     border: 1px solid #ff414f;
 }
-.nav-login-cart button:focus-visible{
+
+.nav-login-cart button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
 }
-.nav-cart-count{
-    width:22px ;
+
+.nav-cart-count {
+    width: 22px;
     height: 22px;
     display: flex;
     justify-content: center;
@@ -95,7 +109,6 @@
     margin-left: -55px;
     border-radius: 11px;
     font-size: 14px;
-    background:red ;
-color: white;
-
+    background: red;
+    color: white;
 }
