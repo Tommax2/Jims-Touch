@@ -1,0 +1,56 @@
+.executive-offer {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #fff;
+  animation: fadeIn 2s ease-in-out;
+  font-weight: bold;
+  height: 50vh; /* Adjusted height */
+  margin: 10px; /* Added margin */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Added spacing between elements */
+}
+
+.executive-offer h2 {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+  animation: bounce 1s infinite;
+}
+
+.executive-offer p {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+}
+
+.offer-button {
+  background-color: #ff7f50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.offer-button:hover {
+  background-color: #ff6347;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
