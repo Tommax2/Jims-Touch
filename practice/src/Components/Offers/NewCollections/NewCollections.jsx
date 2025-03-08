@@ -6,14 +6,14 @@ import { Item } from "../../Items/Item";
 export const NewCollections = () => {
   return (
     <div className="new-collections">
-      <div className="new-collections-left">
-        <div className="new-collection">
-          <h2>New Collection</h2>
-          <p>
-            Get the latest collection of items from our store. Limited stock
-            available!
-          </p>
-        </div>
+      <div className="new-collection-header">
+        <h2>New Collection</h2>
+        <p>
+          Get the latest collection of items from our store. Limited stock
+          available!
+        </p>
+      </div>
+      <div className="new-collections-items">
         {newCollection.map((item) => {
           return (
             <div className="new-collection-item" key={item.id}>
