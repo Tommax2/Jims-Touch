@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Css/ShopCategory.css";
 import dropdown_icon from "../assets/dropdown.jpg";
 import { Item } from "../Components/Items/Item";
@@ -30,12 +31,14 @@ const ShopCategory = (props) => {
       <div className="shopcategory-product-grid">
         {filteredProducts.map((item) => (
           <div className="shopcategory-product-item" key={item.id}>
-            <img
-              src={item.image}
-              alt="new-collection"
-              className="product-image"
-            />
-            <p className="product-name">{item.name}</p>
+            <Link to={`/product/${item.id}`}>
+              <img
+                src={item.image}
+                alt="new-collection"
+                className="product-image"
+              />
+              <p className="product-name">{item.name}</p>
+            </Link>
             <div className="item-prices">
               <div className="item-price-new">{item.new_price}</div>
               <div className="item-price-old">{item.old_price}</div>
@@ -47,4 +50,4 @@ const ShopCategory = (props) => {
   );
 };
 
-export { ShopCategory }; // Changed default export to named export
+export { ShopCategory };

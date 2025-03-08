@@ -22,7 +22,8 @@ function App() {
               element={<ShopCategory category="hair accessories" />}
             />
             <Route path="/product" element={<Product />} />
-            <Route path="/product/:productId" element={<Product />} />
+            <Route path="/product/:productId" element={<Product />} />{" "}
+            {/* Ensure this route is present */}
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<LoginSignup />} />
           </Routes>
