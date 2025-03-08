@@ -10,7 +10,7 @@ import p9_img from "../../assets/Vietnamese 10 inches bone straight.jpg";
 import p10_img from "../../assets/Hot comb.jpg";
 import p11_img from "../../assets/octopus brush.jpg";
 import p12_img from "../../assets/straighter.jpg";
-import p13_img from "../../assets/leave in conditioner for curly hairs.jpg";
+import p13_img from "../../assets/Leave in conditioner for curly hairs .jpg";
 import p14_img from "../../assets/wax stick.jpg";
 import p15_img from "../../assets/wig pins.jpg";
 import p16_img from "../../assets/hair mousse.jpg";

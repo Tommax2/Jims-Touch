@@ -4,7 +4,7 @@ import { Navbar } from "./Components/Navbar/Navbar";
 import { Product } from "./Pages/Product";
 import { LoginSignup } from "./Pages/LoginSignup";
 import { Shop } from "./Pages/shop";
-import { ShopCategory } from "./Pages/ShopCategory";
+import { ShopCategory } from "./Pages/ShopCategory"; // Corrected import path
 import { Cart } from "./Pages/Cart";
 import { Footer } from "./Components/Footer/Footer";
 

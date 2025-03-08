@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
 
 export const Product = () => {
-  return (
-    <div>Product</div>
-  )
-}
+  const { All_products } = useContext(ShopContext);
+  const { prodctId } = useParams();
+  const product = All_products.find((e) => e.id === number(prodctId));
+  return
+   <div>
+
+  </div>;
+};

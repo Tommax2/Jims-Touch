@@ -9,7 +9,7 @@ export const Footer = () => {
         <h1>Jims touch</h1>
         <p>Get the best items from our store at the best prices.</p>
       </div>
-      
+
       <div className="footer-links">
         <h3>Quick Links</h3>
         <ul>
@@ -20,7 +20,7 @@ export const Footer = () => {
           <li>Contact</li>
         </ul>
       </div>
-      
+
       <div className="footer-social">
         <h3>Follow Us</h3>
         <ul>
