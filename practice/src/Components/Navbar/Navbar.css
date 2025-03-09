@@ -3,12 +3,14 @@
     justify-content: space-around;
     padding: 16px;
     box-shadow: 0 1px 3px -2px black;
+    padding: 20px; /* Added padding */
 }
 
 .navbar__left {
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 10px; /* Added padding */
 }
 
 .navbar__left h1 {
@@ -28,6 +30,7 @@
     list-style: none;
     color: #171717;
     font-size: 20px;
+    padding: 10px; /* Added padding */
 }
 
 .nav-menu li {
@@ -122,6 +125,7 @@
     display: flex;
     align-items: center;
     gap: 50px;
+    padding: 10px; /* Added padding */
 }
 
 .nav-login-cart img {
@@ -169,10 +173,10 @@
 }
 
 .menu-toggle {
-
     flex-direction: column;
     cursor: pointer;
     margin-left: auto;
+    padding: 10px; /* Added padding */
 }
 
 .menu-toggle span {
@@ -181,6 +185,24 @@
     background: #171717;
     margin: 4px 0;
     transition: 0.4s;
+}
+
+.nav-toggle-icon {
+    display: none; /* Hide toggle icon by default */
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px; /* Adjust padding for medium screens */
+    }
+
+    .nav-menu {
+        gap: 40px; /* Adjust gap for medium screens */
+    }
+
+    .nav-login-cart {
+        gap: 40px; /* Adjust gap for medium screens */
+    }
 }
 
 @media (max-width: 768px) {
@@ -216,6 +238,10 @@
 
     .nav-menu.active {
         display: flex;
+    }
+
+    .nav-toggle-icon {
+        display: block; /* Show toggle icon on smaller screens */
     }
 }
 

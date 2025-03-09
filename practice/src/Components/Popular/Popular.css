@@ -1,12 +1,14 @@
-.popular{
+.popular {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    height: 90vh;
+    /* height: 90vh; Removed height */
+    padding: 20px; /* Added padding */
+    text-align: center; /* Center text */
 }
 .popular h1{
-    font-size: 2.5rem;
+    font-size: 2rem; /* Changed from 2.5rem to 2rem */
     font-weight: 600;
     color: #171717;
 }
@@ -15,4 +17,54 @@
     gap: 20px;
     justify-content: center;
     gap: 30px;
+    flex-wrap: wrap; /* Allow items to wrap */
+}
+.popular-items img {
+    width: 360px;
+    max-width: 600px;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.popular-item {
+    width: 360px; /* Set width to 360px */
+    text-align: center; /* Center text */
+}
+
+.popular-item .price, .popular-item .item {
+    display: block; /* Arrange price and item vertically */
+    margin: 10px 0; /* Add margin for spacing */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .popular {
+        height: auto;
+    }
+    .popular-items {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Media query to reduce image size for screens smaller than 1200px */
+@media (max-width: 1200px) {
+    .popular-items img {
+        width: 200px;
+        max-width: 1200px; /* Changed from 1600px to 1200px */
+    }
+}
+
+/* Media query for screens smaller than 310px */
+@media (max-width: 310px) {
+    .popular-items img {
+        width: 150px;
+        max-width: 310px;
+    }
+    .popular-item {
+        width: 100%;
+    }
+    .popular {
+        padding: 10px;
+    }
 }

@@ -59,3 +59,25 @@
     cursor: pointer;
     border-radius: 80px;
 }
+
+@media (max-width: 1200px) and (min-width: 310px) {
+    .newletter {
+        width: 90%;
+        padding: 0px 20px;
+    }
+    .newletter div {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .newletter input {
+        width: 100%;
+        height: 50px;
+        margin-left: 0;
+    }
+    .newletter div button {
+        width: 100%;
+        height: 50px;
+    }
+}

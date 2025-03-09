@@ -10,6 +10,7 @@ export const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const { getTotalCartItems } = useContext(ShopContext);
   const [dropdown, setDropdown] = useState(false);
+  const [menuActive, setMenuActive] = useState(false); // State for menu toggle
 
   return (
     <div className="navbar">
@@ -17,7 +18,7 @@ export const Navbar = () => {
         <img src={shop} alt="shop" />
         <h1>JIMS</h1>
       </div>
-      <ul className="nav-menu">
+      <ul className={`nav-menu ${menuActive ? "active" : ""}`}>
         <li
           onMouseEnter={() => setDropdown(true)}
           onMouseLeave={() => setDropdown(false)}
@@ -74,7 +75,11 @@ export const Navbar = () => {
         </Link>
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
-      <BiMenu className="nav-toggle-icon" /> {/* Adding the toggle icon */}
+      <BiMenu
+        className="nav-toggle-icon"
+        onClick={() => setMenuActive(!menuActive)}
+      />{" "}
+      {/* Adding the toggle icon */}
     </div>
   );
 };
