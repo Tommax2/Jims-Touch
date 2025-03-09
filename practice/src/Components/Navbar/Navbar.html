@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ...existing code... -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- ...existing code... -->
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar__left">
+        <!-- ...existing code... -->
+      </div>
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="bx bx-menu"></i>
+      </div>
+      <ul class="nav-menu" id="nav-menu">
+        <!-- ...existing code... -->
+      </ul>
+      <div class="nav-login-cart">
+        <!-- ...existing code... -->
+      </div>
+    </nav>
+    <script>
+      const menuToggle = document.getElementById("menu-toggle");
+      const navMenu = document.getElementById("nav-menu");
+
+      menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

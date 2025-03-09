@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import shop from "../../assets/shop.png";
 import cart from "../../assets/cart.png"; // Correct path for the cart image
+import { ShopContext } from "../../Context/ShopContext";
+import { BiMenu } from "react-icons/bi"; // Importing the toggle icon from Box Icons
 
 export const Navbar = () => {
   const [menu, setMenu] = useState("shop");
+  const { getTotalCartItems } = useContext(ShopContext);
+  const [dropdown, setDropdown] = useState(false);
+
   return (
     <div className="navbar">
       <div className="navbar__left">
@@ -14,35 +19,51 @@ export const Navbar = () => {
       </div>
       <ul className="nav-menu">
         <li
-          onClick={() => {
-            setMenu("shop");
-          }}
+          onMouseEnter={() => setDropdown(true)}
+          onMouseLeave={() => setDropdown(false)}
         >
-          <Link style={{ textDecoration: "none" }} to="/">
+          <Link style={{ textDecoration: "none" }} to="/shop">
             Shop
           </Link>
-          {menu === "shop" ? <hr /> : null}
+          {dropdown && (
+            <ul className="dropdown-menu">
+              <li
+                onClick={() => {
+                  setMenu("shop");
+                  setDropdown(false);
+                }}
+              >
+                <Link style={{ textDecoration: "none" }} to="/shop">
+                  Shop
+                </Link>
+                {menu === "shop" ? <hr /> : null}
+              </li>
+              <li
+                onClick={() => {
+                  setMenu("wigs");
+                  setDropdown(false);
+                }}
+              >
+                <Link style={{ textDecoration: "none" }} to="/wigs">
+                  Wigs
+                </Link>
+                {menu === "wigs" ? <hr /> : null}
+              </li>
+              <li
+                onClick={() => {
+                  setMenu("hair accessories");
+                  setDropdown(false);
+                }}
+              >
+                <Link style={{ textDecoration: "none" }} to="/hair-accessories">
+                  Hair accessories
+                </Link>
+                {menu === "hair accessories" ? <hr /> : null}
+              </li>
+            </ul>
+          )}
         </li>
-        <li
-          onClick={() => {
-            setMenu("wigs");
-          }}
-        >
-          <Link style={{ textDecoration: "none" }} to="/wigs">
-            Wigs
-          </Link>
-          {menu === "wigs" ? <hr /> : null}
-        </li>
-        <li
-          onClick={() => {
-            setMenu("hair accessories");
-          }}
-        >
-          <Link style={{ textDecoration: "none" }} to="/hair-accessories">
-            Hair accessories
-          </Link>
-          {menu === "hair accessories" ? <hr /> : null}
-        </li>
+        {/* Removed the main menu item for Hair accessories */}
       </ul>
       <div className="nav-login-cart">
         <Link to="/login">
@@ -51,8 +72,11 @@ export const Navbar = () => {
         <Link to="/cart">
           <img src={cart} alt="cart" />
         </Link>
-        <div className="nav-cart-count">0</div>
+        <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
+      <BiMenu className="nav-toggle-icon" /> {/* Adding the toggle icon */}
     </div>
   );
 };
+
+export default Navbar;

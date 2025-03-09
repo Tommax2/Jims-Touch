@@ -26,10 +26,10 @@ export const ProductDisplay = (props) => {
         <h1 className="product-title">{product?.name}</h1>
         <div className="productdisplay-right-prices">
           <div className="productdisplay-right-price-new">
-            {product?.new_price}
+          ₦ {product?.new_price}
           </div>
           <div className="productdisplay-right-price-old">
-            {product?.old_price}
+          ₦ {product?.old_price}
           </div>
         </div>
         <div className="productdisplay-right-description">

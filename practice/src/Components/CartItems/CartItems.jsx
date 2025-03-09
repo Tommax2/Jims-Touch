@@ -1,11 +1,17 @@
 import React, { useContext } from "react";
 import "./Cartitems.css";
 import removeicon from "../../assets/removeIcon.jpg";
-import { ShopContext } from "../../Context/ShopContext"; // Add this line
+import { ShopContext } from "../../Context/ShopContext";
 
 export const CartItems = () => {
   const { All_products, cart, removeFromCart, updateCart } =
     useContext(ShopContext);
+
+  // Calculate the total price
+  const totalPrice = All_products.reduce((total, product) => {
+    const quantity = cart[product.id] || 0;
+    return total + quantity * parseFloat(product.new_price.replace(/,/g, ""));
+  }, 0);
 
   return (
     <div className="cartitems">
@@ -35,10 +41,13 @@ export const CartItems = () => {
                 >
                   {quantity}
                 </button>
-                <p>  { e.new_price} *{cart [e.id] } </p>{" "}
-                {/* Calculate total and cast to string */}
+                <p>₦
+                  {(
+                    parseFloat(e.new_price.replace(/,/g, "")) * quantity
+                  ).toLocaleString()}
+                </p>
                 <img
-                className="carticon-remove-icon"
+                  className="carticon-remove-icon"
                   src={removeicon}
                   onClick={() => {
                     removeFromCart(e.id);
@@ -54,22 +63,24 @@ export const CartItems = () => {
       })}
       <div className="cartitems-down">
         <div className="cartitems-total">
-            <h1>carts Total </h1>
-            <div>
-                <div className="cartitems-total-items">
-                    <p> subtotal</p>
-                    <p>{0} </p>
-                </div>
-                <hr />
-                <div className="cartitems-total-items">
-                    <p>Shipping fee </p>
-                    <p>Free </p>
-                </div>
-                <hr/>
-                <div className="cartitems-total-items">
-                    <h3>Total </h3>
-                </div>
+          <h1>Cart Total</h1>
+          <div>
+            <div className="cartitems-total-items">
+              <p>Subtotal</p>
+              <p>{totalPrice.toLocaleString()}</p>
             </div>
+            <hr />
+            <div className="cartitems-total-items">
+              <p>Shipping fee</p>
+              <p>Free</p>
+            </div>
+            <hr />
+            <div className="cartitems-total-items">
+              <h3>Total</h3>
+              <h3>{totalPrice.toLocaleString()}</h3>
+            </div>
+          </div>
+          <button>Proceed to checkout</button>
         </div>
       </div>
     </div>

@@ -84,7 +84,10 @@
 .productdisplay-right-size {
     margin: 20px 0;
 }
-
+.productdisplay-right-size h1{
+    margin-bottom: 20px;
+    
+}
 .productdisplay-right-size-options {
     display: flex;
     justify-content: space-between;

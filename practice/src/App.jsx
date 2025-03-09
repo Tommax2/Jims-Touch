@@ -3,7 +3,7 @@ import "./App.css";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Product } from "./Pages/Product";
 import { LoginSignup } from "./Pages/LoginSignup";
-import { Shop } from "./Pages/shop";
+import { Shop } from "./Pages/Shop";
 import { ShopCategory } from "./Pages/ShopCategory"; // Corrected import path
 import { Cart } from "./Pages/Cart";
 import { Footer } from "./Components/Footer/Footer";
@@ -16,6 +16,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Shop />} />
+            <Route path="/shop" element={<Shop />} />{" "}
+            {/* Added route for /shop */}
             <Route path="/wigs" element={<ShopCategory category="wigs" />} />
             <Route
               path="/hair-accessories"

@@ -1,43 +1,51 @@
-import React from "react";
-import { createContext } from "react";
+import React, { createContext, useState } from "react";
 import All_products from "../assets/AllProduct/AllProduct";
 
-export const ShopContext = createContext(null);
-const getDefaultCart = () => {
-  let cart = {};
-  for (let index = 0; index < All_products.length; index++) {
-    cart[All_products[index].id] = 0;
-  }
-  return cart;
-};
-const ShopContextProvider = (props) => {
-  const [cart, setCart] = React.useState(getDefaultCart());
+export const ShopContext = createContext();
 
-  const addToCart = (id) => {
-    setCart((prevCart) => {
-      return { ...prevCart, [id]: prevCart[id] + 1 };
-    });
-    console.log(cart);
+export const ShopContextProvider = ({ children }) => {
+  const [cart, setCart] = useState({});
+
+  const updateCart = (id, quantity) => {
+    setCart((prevCart) => ({
+      ...prevCart,
+      [id]: quantity,
+    }));
   };
 
   const removeFromCart = (id) => {
     setCart((prevCart) => {
-      return { ...prevCart, [id]: prevCart[id] - 1 };
+      const newCart = { ...prevCart };
+      delete newCart[id];
+      return newCart;
     });
   };
 
-  const contextValue = {
-    All_products,
-    cart,
-    setCart,
-    addToCart,
-    removeFromCart,
+  const addToCart = (id) => {
+    setCart((prevCart) => ({
+      ...prevCart,
+      [id]: (prevCart[id] || 0) + 1,
+    }));
+  };
+
+  const getTotalCartItems = () => {
+    return Object.values(cart).reduce((total, quantity) => total + quantity, 0);
   };
 
   return (
-    <ShopContext.Provider value={contextValue}>
-      {props.children}
+    <ShopContext.Provider
+      value={{
+        All_products,
+        cart,
+        updateCart,
+        removeFromCart,
+        addToCart,
+        getTotalCartItems,
+      }}
+    >
+      {children}
     </ShopContext.Provider>
   );
 };
+
 export default ShopContextProvider;

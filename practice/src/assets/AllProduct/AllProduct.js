@@ -25,144 +25,144 @@ let All_products= [
         id: 1,
         name: "Fringe Bone Straight Wig",
         image: p1_img,
-        new_price: "₦155,000",
-        old_price: "₦160,000"
+        new_price: "155,000",
+        old_price: "160,000"
     },
     {
         id: 2,
         name: "Bouncy Wig",
         image: p2_img,
-        new_price: "₦90,000",
-        old_price: "₦100,000"
+        new_price: "90,000",
+        old_price: "100,000"
     },
     {
         id: 3,
         name: "Human Hair Full Frontal Paired with a Human Hair Blend",
         image: p3_img,
-        new_price: "₦52,000",
-        old_price: "₦53,000" // Fixed typo here
+        new_price: "52,000",
+        old_price: "53,000" // Fixed typo here
     },
     {
         id: 4,
         name: "Fringe and Closure",
         image: p4_img,
-        new_price: "₦125,000",
-        old_price: "₦130,000"
+        new_price: "125,000",
+        old_price: "130,000"
     }
     ,
     {
         id: 5,
         name: "5by5 Closure",
         image: p5_img,
-        new_price: "₦32,000",
-        old_price: "₦35,000"
+        new_price: "32,000",
+        old_price: "35,000"
     },
     {
         id: 6,
         name: "SDD Vietnamese Bone Straight as Fringe", // Fixed typo here          
         image: p6_img,                                      // Fixed typo here
-        new_price: "₦130,000",
-        old_price: "₦140,000"        
+        new_price: "130,000",
+        old_price: "140,000"        
 
     },  
     {
         id: 7,
         name: "Full Frontal Yaki 💯Human Hair",
         image: p7_img,
-        new_price: "₦120,000",
-        old_price: "₦124,000"
+        new_price: "120,000",
+        old_price: "124,000"
     },
     {
         id: 8,
         name: "Full 4by4 Closure 💯Human Hair",
         image: p8_img,
-        new_price: "₦75,000",   
-        old_price: "₦80,000"
+        new_price: "75,000",   
+        old_price: "80,000"
     },
     {
         id: 9,
         name: "Vietnamese 10 Inches Bone Straight",
         image: p9_img,
-        new_price: "₦140,000",
-        old_price: "₦150,000"
+        new_price: "140,000",
+        old_price: "150,000"
     }
     ,
     {
         id: 10,
         name: "Hot Comb",
         image: p10_img,
-        new_price: "₦14,000",
-        old_price: "₦15,000"
+        new_price: "14,000",
+        old_price: "15,000"
     },
     {
         id: 11,
         name: "Octopus Brush",
         image: p11_img,
-        new_price: "₦4,000",
-        old_price: "₦5,000"
+        new_price: "4,000",
+        old_price: "5,000"
     },
     {
         id: 12,
         name: "Straighter",
         image: p12_img,
-        new_price: "₦15,000",
-        old_price: "₦20,000"
+        new_price: "15,000",
+        old_price: "20,000"
     },
     {
         id: 13,
         name: "Leave in Conditioner for Curly Hairs",
         image: p13_img,
-        new_price: "₦15,000",
-        old_price: "₦16,000"
+        new_price: "15,000",
+        old_price: "16,000"
     },
     {
         id: 14,
         name: "Wax Stick",
         image: p14_img,
-        new_price: "₦4,000",
-        old_price: "₦5,000"
+        new_price: "4,000",
+        old_price: "5,000"
     },
     {
         id: 15,
         name: "Wig Pins",
         image: p15_img,
-        new_price: "₦1,500",
-        old_price: "₦2,000"
+        new_price: "1,500",
+        old_price: "2,000"
     },
     {
         id: 16,
         name: "Hair Mousse",
         image: p16_img,
-        new_price: "₦10,000",
-        old_price: "₦11,000"
+        new_price: "10,000",
+        old_price: "11,000"
     },
     {
         id: 17,
         name: "Brush",
         image: p17_img,
-        new_price: "₦3,000",
-        old_price: "₦5,000"
+        new_price: "3,000",
+        old_price: "5,000"
     },
     {
         id: 18,
         name: "Hair Serum",
         image: p18_img,
-        new_price: "₦4,500",
-        old_price: "₦5,000"
+        new_price: "4,500",
+        old_price: "5,000"
     },
     {
         id: 19,
         name: "Fancy Brush",
         image: p19_img,
-        new_price: "₦3,000",
-        old_price: "₦4,000"
+        new_price: "3,000",
+        old_price: "4,000"
     },
     {
         id: 20,
         name: "Hair Cury Maintainance",
         image: p20_img,
-        new_price: "₦4,000",
-        old_price: "₦6,000"
+        new_price: "4,000",
+        old_price: "6,000"
     }
 ];
 

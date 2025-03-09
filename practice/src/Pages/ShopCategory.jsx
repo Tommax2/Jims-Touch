@@ -40,8 +40,8 @@ const ShopCategory = (props) => {
               <p className="product-name">{item.name}</p>
             </Link>
             <div className="item-prices">
-              <div className="item-price-new">{item.new_price}</div>
-              <div className="item-price-old">{item.old_price}</div>
+              <div className="item-price-new"> ₦{item.new_price}</div>
+              <div className="item-price-old" >₦{item.old_price}</div>
             </div>
           </div>
         ))}
