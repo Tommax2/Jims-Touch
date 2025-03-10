@@ -60,10 +60,100 @@
     border-radius: 80px;
 }
 
+@media (max-width: 1200px) and (min-width: 768px) {
+    .newletter {
+        width: 90%;
+        padding: 0px 20px;
+    }
+    .newletter h1 {
+        font-size: 30px; /* Reduced font size */
+    }
+    .newletter p {
+        font-size: 16px; /* Reduced font size */
+    }
+    .newletter div {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .newletter input {
+        width: 100%;
+        height: 50px;
+        margin-left: 0;
+    }
+    .newletter div button {
+        width: 100%;
+        height: 50px;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 480px) {
+    .newletter {
+        width: 95%;
+        padding: 0px 15px;
+    }
+    .newletter h1 {
+        font-size: 25px; /* Further reduced font size */
+    }
+    .newletter p {
+        font-size: 14px; /* Further reduced font size */
+    }
+    .newletter div {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .newletter input {
+        width: 100%;
+        height: 45px;
+        margin-left: 0;
+    }
+    .newletter div button {
+        width: 100%;
+        height: 45px;
+    }
+}
+
+@media (max-width: 479px) and (min-width: 310px) {
+    .newletter {
+        width: 100%;
+        padding: 0px 10px;
+    }
+    .newletter h1 {
+        font-size: 20px; /* Further reduced font size */
+    }
+    .newletter p {
+        font-size: 12px; /* Further reduced font size */
+    }
+    .newletter div {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .newletter input {
+        width: 100%;
+        height: 40px;
+        margin-left: 0;
+    }
+    .newletter div button {
+        width: 100%;
+        height: 40px;
+    }
+}
+
 @media (max-width: 1200px) and (min-width: 310px) {
     .newletter {
         width: 90%;
         padding: 0px 20px;
+    }
+    .newletter h1 {
+        font-size: 30px; /* Further reduced font size */
+    }
+    .newletter p {
+        font-size: 16px; /* Further reduced font size */
     }
     .newletter div {
         width: 100%;
