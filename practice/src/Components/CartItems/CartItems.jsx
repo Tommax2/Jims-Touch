@@ -3,6 +3,9 @@ import "./Cartitems.css";
 import removeicon from "../../assets/removeIcon.jpg";
 import { ShopContext } from "../../Context/ShopContext";
 
+// Remove AI library import
+// import { generateEnhancedMessage } from "../../utils/aiUtils";
+
 export const CartItems = () => {
   const { All_products, cart, removeFromCart, updateCart } =
     useContext(ShopContext);
@@ -16,6 +19,30 @@ export const CartItems = () => {
         : String(product.new_price);
     return total + quantity * parseFloat(price.replace(/,/g, ""));
   }, 0);
+
+  // Generate WhatsApp message link
+  const generateWhatsAppLink = () => {
+    const cartDetails = All_products.filter((product) => cart[product.id])
+      .map((product) => {
+        const quantity = cart[product.id];
+        const price =
+          typeof product.new_price === "string"
+            ? product.new_price
+            : String(product.new_price);
+        return `${product.name} (x${quantity}) - ₦${(
+          parseFloat(price.replace(/,/g, "")) * quantity
+        ).toLocaleString()}`;
+      })
+      .join("\n");
+    const message = `I would like to buy the following items:\n\n${cartDetails}\n\nTotal: ₦${totalPrice.toLocaleString()}`;
+
+    // Remove AI-enhanced message generation
+    // const enhancedMessage = generateEnhancedMessage(message);
+
+    return `https://wa.me/message/BPJEWHG2JCFDM1?text=${encodeURIComponent(
+      message
+    )}`;
+  };
 
   return (
     <div className="cartitems">
@@ -87,7 +114,13 @@ export const CartItems = () => {
               <h3>{totalPrice.toLocaleString()}</h3>
             </div>
           </div>
-          <button>Proceed to checkout</button>
+          <a
+            href={generateWhatsAppLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button>Proceed to checkout</button>
+          </a>
         </div>
       </div>
     </div>
