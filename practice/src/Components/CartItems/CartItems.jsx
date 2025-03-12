@@ -10,7 +10,11 @@ export const CartItems = () => {
   // Calculate the total price
   const totalPrice = All_products.reduce((total, product) => {
     const quantity = cart[product.id] || 0;
-    return total + quantity * parseFloat(product.new_price.replace(/,/g, ""));
+    const price =
+      typeof product.new_price === "string"
+        ? product.new_price
+        : String(product.new_price);
+    return total + quantity * parseFloat(price.replace(/,/g, ""));
   }, 0);
 
   return (
@@ -27,6 +31,8 @@ export const CartItems = () => {
       {All_products.map((e) => {
         const quantity = cart[e.id] || 0; // Ensure quantity is a valid number
         if (quantity > 0) {
+          const price =
+            typeof e.new_price === "string" ? e.new_price : String(e.new_price);
           return (
             <div key={e.id}>
               <div className="cartitems-format">
@@ -41,9 +47,10 @@ export const CartItems = () => {
                 >
                   {quantity}
                 </button>
-                <p>₦
+                <p>
+                  ₦
                   {(
-                    parseFloat(e.new_price.replace(/,/g, "")) * quantity
+                    parseFloat(price.replace(/,/g, "")) * quantity
                   ).toLocaleString()}
                 </p>
                 <img
