@@ -55,8 +55,29 @@
   60% { transform: translateY(-5px); }
 }
 
-/* Media queries for responsiveness */
+/* Media Queries */
+@media (max-width: 1200px) {
+  .offers {
+    /* ...existing styles... */
+  }
+  .offers-right {
+    /* ...existing styles... */
+  }
+  .executive-offer {
+    /* ...existing styles... */
+  }
+  .offer-button {
+    /* ...existing styles... */
+  }
+}
+
 @media (max-width: 768px) {
+  .offers {
+    /* ...existing styles... */
+  }
+  .offers-right {
+    /* ...existing styles... */
+  }
   .executive-offer {
     padding: 15px;
     height: auto; /* Adjust height for smaller screens */
@@ -77,6 +98,12 @@
 }
 
 @media (max-width: 480px) {
+  .offers {
+    /* ...existing styles... */
+  }
+  .offers-right {
+    /* ...existing styles... */
+  }
   .executive-offer {
     padding: 10px;
     height: auto; /* Adjust height for smaller screens */
