@@ -5,7 +5,9 @@ import "./Offers.css";
 
 export const Offers = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = useContext(AuthContext); // Retrieve login status from context
+  const authContext = useContext(AuthContext); // Retrieve the context
+
+  const isLoggedIn = authContext?.isLoggedIn ?? false; // Safely access isLoggedIn
 
   const handleShopNowClick = () => {
     if (isLoggedIn) {
