@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom"; // Updated to useNavigate
+import { useNavigate } from "react-router-dom";
 import "./Cartitems.css";
 import removeicon from "../../assets/removeIcon.jpg";
 import { ShopContext } from "../../Context/ShopContext";
@@ -10,9 +10,10 @@ export const CartItems = () => {
     cart,
     removeFromCart,
     updateCart,
-    isAuthenticated = false, // Default to false if undefined or null
-  } = useContext(ShopContext); // Assume isAuthenticated is provided by ShopContext
-  const navigate = useNavigate(); // Updated to useNavigate
+    isAuthenticated = false, // Default to false if not provided
+  } = useContext(ShopContext);
+
+  const navigate = useNavigate();
 
   // Calculate the total price
   const totalPrice = All_products.reduce((total, product) => {
@@ -20,22 +21,48 @@ export const CartItems = () => {
     const price =
       typeof product.new_price === "string"
         ? product.new_price
-        : String(product.new_price || "0"); // Ensure price is a valid string
+        : String(product.new_price || "0");
     return total + quantity * parseFloat(price.replace(/,/g, ""));
   }, 0);
 
   // Generate WhatsApp link
   const generateWhatsAppLink = () => {
-    return `https://wa.me/message/BPJEWHG2JCFDM1`; // Replace with the actual phone number
+    // Prepare cart items for WhatsApp message
+    const cartItems = All_products
+      .filter(product => cart[product.id] > 0)
+      .map(product => {
+        const quantity = cart[product.id];
+        return `${product.name} (${quantity}x): ₦${(
+          parseFloat(
+            (typeof product.new_price === "string" 
+              ? product.new_price 
+              : String(product.new_price || "0")
+            ).replace(/,/g, "")
+          ) * quantity
+        ).toLocaleString()}`;
+      })
+      .join("%0A"); // URL encoded line break
+
+    const message = `Hello, I would like to place an order:%0A${cartItems}%0A%0ATotal: ₦${totalPrice.toLocaleString()}`;
+    
+    return `https://wa.me/message/BPJEWHG2JCFDM1?text=${encodeURIComponent(message)}`;
   };
 
   const handleCheckout = () => {
+    console.log("Checkout clicked, authentication status:", isAuthenticated);
+    
     if (!isAuthenticated) {
+      // If not authenticated, redirect to login page
       console.warn("User is not authenticated. Redirecting to login.");
+      // Store intended destination in sessionStorage
+      sessionStorage.setItem("redirectAfterLogin", "/cart");
       navigate("/login");
       return;
     }
-    window.location.href = generateWhatsAppLink(); // Directly navigate to WhatsApp
+    
+    // If authenticated, proceed to WhatsApp
+    console.log("User is authenticated. Redirecting to WhatsApp.");
+    window.location.href = generateWhatsAppLink();
   };
 
   return (
@@ -50,7 +77,7 @@ export const CartItems = () => {
       </div>
       <hr />
       {All_products.map((e) => {
-        const quantity = cart[e.id] || 0; // Ensure quantity is a valid number
+        const quantity = cart[e.id] || 0;
         if (quantity > 0) {
           const price =
             typeof e.new_price === "string"
@@ -61,7 +88,7 @@ export const CartItems = () => {
               <div className="cartitems-format">
                 <img
                   src={e.image}
-                  alt={`Product image of ${e.name}`} // Added meaningful alt text
+                  alt={`Product image of ${e.name}`}
                   className="carticon-product-icon"
                 />
                 <p>{e.name}</p>
@@ -96,7 +123,7 @@ export const CartItems = () => {
                   onClick={() => {
                     removeFromCart(e.id);
                   }}
-                  alt="Remove item from cart" // Added meaningful alt text
+                  alt="Remove item from cart"
                 />
               </div>
               <hr />
@@ -111,7 +138,7 @@ export const CartItems = () => {
           <div>
             <div className="cartitems-total-items">
               <p>Subtotal</p>
-              <p>{totalPrice.toLocaleString()}</p>
+              <p>₦{totalPrice.toLocaleString()}</p>
             </div>
             <hr />
             <div className="cartitems-total-items">
@@ -121,7 +148,7 @@ export const CartItems = () => {
             <hr />
             <div className="cartitems-total-items">
               <h3>Total</h3>
-              <h3>{totalPrice.toLocaleString()}</h3>
+              <h3>₦{totalPrice.toLocaleString()}</h3>
             </div>
           </div>
           <button onClick={handleCheckout}>Proceed to checkout</button>
