@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from "react";
-import { data } from "react-router-dom";
 
 export const ShopContext = createContext();
 
@@ -9,8 +8,17 @@ export const ShopContextProvider = ({ children }) => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : {};
   });
+  // Add authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+  // Check for authentication token on component mount
+  useEffect(() => {
+    const token = localStorage.getItem("auth-token");
+    setIsAuthenticated(!!token);
+    console.log("Auth token found:", !!token);
+  }, []);
 
   useEffect(() => {
     fetch(`${backendUrl}/allproduct`) // Ensure the URL is correct
@@ -80,6 +88,17 @@ export const ShopContextProvider = ({ children }) => {
     return Object.values(cart).reduce((total, quantity) => total + quantity, 0);
   };
 
+  // Add login and logout functions
+  const login = (token) => {
+    localStorage.setItem("auth-token", token);
+    setIsAuthenticated(true);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("auth-token");
+    setIsAuthenticated(false);
+  };
+
   return (
     <ShopContext.Provider
       value={{
@@ -89,6 +108,9 @@ export const ShopContextProvider = ({ children }) => {
         removeFromCart,
         addToCart,
         getTotalCartItems,
+        isAuthenticated,
+        login,
+        logout
       }}
     >
       {children}

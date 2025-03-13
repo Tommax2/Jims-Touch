@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cartitems.css";
 import removeicon from "../../assets/removeIcon.jpg";
@@ -10,10 +10,16 @@ export const CartItems = () => {
     cart,
     removeFromCart,
     updateCart,
-    isAuthenticated = false, // Default to false if not provided
+    isAuthenticated
   } = useContext(ShopContext);
 
   const navigate = useNavigate();
+
+  // Debug authentication status
+  useEffect(() => {
+    console.log("Cart component - Auth status:", isAuthenticated);
+    console.log("Auth token exists:", !!localStorage.getItem("auth-token"));
+  }, [isAuthenticated]);
 
   // Calculate the total price
   const totalPrice = All_products.reduce((total, product) => {
@@ -25,9 +31,8 @@ export const CartItems = () => {
     return total + quantity * parseFloat(price.replace(/,/g, ""));
   }, 0);
 
-  // Generate WhatsApp link
+  // Generate WhatsApp link with cart details
   const generateWhatsAppLink = () => {
-    // Prepare cart items for WhatsApp message
     const cartItems = All_products
       .filter(product => cart[product.id] > 0)
       .map(product => {
@@ -41,7 +46,7 @@ export const CartItems = () => {
           ) * quantity
         ).toLocaleString()}`;
       })
-      .join("%0A"); // URL encoded line break
+      .join("%0A");
 
     const message = `Hello, I would like to place an order:%0A${cartItems}%0A%0ATotal: ₦${totalPrice.toLocaleString()}`;
     
@@ -49,18 +54,17 @@ export const CartItems = () => {
   };
 
   const handleCheckout = () => {
-    console.log("Checkout clicked, authentication status:", isAuthenticated);
+    console.log("Checkout clicked, auth status:", isAuthenticated);
     
     if (!isAuthenticated) {
-      // If not authenticated, redirect to login page
       console.warn("User is not authenticated. Redirecting to login.");
-      // Store intended destination in sessionStorage
+      // Store current location to redirect back after login
       sessionStorage.setItem("redirectAfterLogin", "/cart");
       navigate("/login");
       return;
     }
     
-    // If authenticated, proceed to WhatsApp
+    // User is authenticated, proceed to WhatsApp
     console.log("User is authenticated. Redirecting to WhatsApp.");
     window.location.href = generateWhatsAppLink();
   };

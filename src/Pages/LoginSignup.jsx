@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Css/LoginSignup.css";
+import { ShopContext } from "../../Context/ShopContext"; // Update path if needed
 
 export const LoginSignup = () => {
   const [state, setState] = useState("Login");
@@ -10,6 +12,10 @@ export const LoginSignup = () => {
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
+  
+  // Get the ShopContext
+  const { login: contextLogin } = useContext(ShopContext);
 
   useEffect(() => {
     // Check if the user is already logged in
@@ -25,54 +31,85 @@ export const LoginSignup = () => {
 
   const login = async () => {
     console.log("Login Function Executed", formData);
-    await fetch(`${backendUrl}/login`, {
-      // Changed endpoint to /login
-      method: "POST",
-      headers: {
-        Accept: "application/form-data",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          localStorage.setItem("auth-token", data.token);
-          window.location.replace("/");
-        } else {
-          alert(data.errors);
-        }
+    try {
+      const response = await fetch(`${backendUrl}/login`, {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        console.log("Login successful, setting token");
+        // Update auth state in context
+        contextLogin(data.token);
+        
+        // Check for redirect after login
+        const redirectPath = sessionStorage.getItem("redirectAfterLogin");
+        if (redirectPath) {
+          console.log("Redirecting to:", redirectPath);
+          sessionStorage.removeItem("redirectAfterLogin");
+          navigate(redirectPath);
+        } else {
+          // Default redirect to home
+          navigate("/");
+        }
+      } else {
+        alert(data.errors || "Login failed");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("An error occurred during login");
+    }
   };
 
   const signup = async () => {
     console.log("Signup Function Executed", formData);
-    await fetch(`${backendUrl}/signup`, {
-      method: "POST",
-      headers: {
-        Accept: "application/form-data",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          localStorage.setItem("auth-token", data.token);
-          window.location.replace("/");
-        } else {
-          alert(data.errors);
-        }
+    try {
+      const response = await fetch(`${backendUrl}/signup`, {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        console.log("Signup successful, setting token");
+        // Update auth state in context
+        contextLogin(data.token);
+        
+        // Check for redirect after signup
+        const redirectPath = sessionStorage.getItem("redirectAfterLogin");
+        if (redirectPath) {
+          console.log("Redirecting to:", redirectPath);
+          sessionStorage.removeItem("redirectAfterLogin");
+          navigate(redirectPath);
+        } else {
+          // Default redirect to home
+          navigate("/");
+        }
+      } else {
+        alert(data.errors || "Signup failed");
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+      alert("An error occurred during signup");
+    }
   };
 
   if (isLoggedIn) {
     return (
       <div className="loginsignup">
         <h1>You are already logged in!</h1>
-        <button onClick={() => window.location.replace("/")}>
-          Go to Homepage
-        </button>
+        <button onClick={() => navigate("/")}>Go to Homepage</button>
       </div>
     );
   }
