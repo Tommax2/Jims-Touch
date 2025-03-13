@@ -15,7 +15,7 @@ export const CartItems = () => {
     const price =
       typeof product.new_price === "string"
         ? product.new_price
-        : String(product.new_price);
+        : String(product.new_price || "0"); // Ensure price is a valid string
     return total + quantity * parseFloat(price.replace(/,/g, ""));
   }, 0);
 
@@ -25,6 +25,10 @@ export const CartItems = () => {
   };
 
   const handleCheckout = () => {
+    if (isAuthenticated === undefined || isAuthenticated === null) {
+      console.error("Authentication status is undefined or null.");
+      return;
+    }
     if (isAuthenticated) {
       window.location.href = generateWhatsAppLink(); // Directly navigate to WhatsApp
     } else {
@@ -47,7 +51,9 @@ export const CartItems = () => {
         const quantity = cart[e.id] || 0; // Ensure quantity is a valid number
         if (quantity > 0) {
           const price =
-            typeof e.new_price === "string" ? e.new_price : String(e.new_price);
+            typeof e.new_price === "string"
+              ? e.new_price
+              : String(e.new_price || "0");
           return (
             <div key={e.id}>
               <div className="cartitems-format">
@@ -58,14 +64,24 @@ export const CartItems = () => {
                 />
                 <p>{e.name}</p>
                 <p>{e.new_price}</p>
-                <button
-                  className="cartitems-quantity"
-                  onClick={() => {
-                    updateCart(e.id, quantity + 1);
-                  }}
-                >
-                  {quantity}
-                </button>
+                <div className="cartitems-quantity-container">
+                  <button
+                    onClick={() => {
+                      updateCart(e.id, quantity - 1);
+                    }}
+                    disabled={quantity <= 1}
+                  >
+                    -
+                  </button>
+                  <span>{quantity}</span>
+                  <button
+                    onClick={() => {
+                      updateCart(e.id, quantity + 1);
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
                 <p>
                   ₦
                   {(

@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext"; // Import the authentication context
 import "./Offers.css";
 
 export const Offers = () => {
   const navigate = useNavigate();
-  const isLoggedIn = false; // Replace with actual login status from context or state
+  const { isLoggedIn } = useContext(AuthContext); // Retrieve login status from context
 
   const handleShopNowClick = () => {
     if (isLoggedIn) {
