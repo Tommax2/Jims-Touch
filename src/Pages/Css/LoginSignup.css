@@ -65,7 +65,7 @@ font-weight: 500;
 }
 .loginsignup-container p{
     color: #454545;
-    font-size: 14px; /* Reduced from 16px */
+    font-size: 12px; /* Reduced from 14px */
     font-weight: 500;
     text-align: center;
     margin-top: 20px;
@@ -84,6 +84,10 @@ font-weight: 500;
 .loginsignup-agree input{
     width: 20px;
     height: 20px;
+}
+
+img {
+    border-radius: 50%;
 }
 
 @media (max-width: 1200px) {

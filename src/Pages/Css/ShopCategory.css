@@ -50,6 +50,7 @@
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
+    border-radius: 10px; /* Added round edges */
   }
   
   .product-name {
