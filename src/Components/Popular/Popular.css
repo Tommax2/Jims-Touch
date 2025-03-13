@@ -3,29 +3,31 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    /* height: 90vh; Removed height */
     padding: 20px; /* Added padding */
     text-align: center; /* Center text */
 }
-.popular h1{
+
+.popular h1 {
     font-size: 2rem; /* Changed from 2.5rem to 2rem */
     font-weight: 600;
     color: #171717;
 }
-.popular-items{
+
+.popular-items {
     display: flex;
     gap: 20px;
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap; /* Allow items to wrap */
 }
+
 .popular-items img {
     width: 380px; /* Increase width slightly */
     max-width: 620px; /* Increase max-width slightly */
     height: auto; /* Ensure height is auto */
     box-sizing: border-box;
     padding: 0 10px;
-    border-radius: 10px; /* Make edges rounded */
+    border-radius: 20px; /* Make edges more rounded */
 }
 
 .popular-item {
@@ -59,7 +61,7 @@
     }
     .popular-items img {
         height: 300px; /* Increase height for smaller screens */
-        border-radius: 10px; /* Add rounded edges */
+        border-radius: 20px; /* Add rounded edges */
     }
     .popular-item .price {
         font-size: 0.9rem; /* Reduce font size for prices */
