@@ -50,7 +50,7 @@ export const CartItems = () => {
 
     const message = `Hello, I would like to place an order:%0A${cartItems}%0A%0ATotal: ₦${totalPrice.toLocaleString()}`;
     
-    return `https://wa.me/message/BPJEWHG2JCFDM1?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/+2348167117816?text=${encodeURIComponent(message)}`;
   };
 
   const handleCheckout = () => {
