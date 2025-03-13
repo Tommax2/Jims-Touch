@@ -20,12 +20,12 @@
     flex-wrap: wrap; /* Allow items to wrap */
 }
 .popular-items img {
-    width: 360px;
-    max-width: 600px;
+    width: 380px; /* Increase width slightly */
+    max-width: 620px; /* Increase max-width slightly */
     height: auto; /* Ensure height is auto */
     box-sizing: border-box;
     padding: 0 10px;
-    border-radius: 0; /* No rounded edges by default */
+    border-radius: 10px; /* Make edges rounded */
 }
 
 .popular-item {
@@ -36,6 +36,16 @@
 .popular-item .price, .popular-item .item {
     display: block; /* Arrange price and item vertically */
     margin: 10px 0; /* Add margin for spacing */
+}
+
+.popular a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit color from parent */
+    font-weight: bold; /* Make links bold */
+}
+
+.popular a:hover {
+    text-decoration: underline; /* Underline links on hover */
 }
 
 /* Media query for smaller screens */
@@ -50,6 +60,9 @@
     .popular-items img {
         height: 300px; /* Increase height for smaller screens */
         border-radius: 10px; /* Add rounded edges */
+    }
+    .popular-item .price {
+        font-size: 0.9rem; /* Reduce font size for prices */
     }
 }
 
@@ -72,5 +85,8 @@
     }
     .popular {
         padding: 10px;
+    }
+    .popular h1 {
+        font-size: 150px; /* Reduce font size from 370px to 150px */
     }
 }
