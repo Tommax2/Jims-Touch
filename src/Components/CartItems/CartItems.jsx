@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom"; // Import useHistory for redirection
 import "./Cartitems.css";
 import removeicon from "../../assets/removeIcon.jpg";
 import { ShopContext } from "../../Context/ShopContext";
 
-// Remove AI library import
-// import { generateEnhancedMessage } from "../../utils/aiUtils";
-
 export const CartItems = () => {
-  const { All_products, cart, removeFromCart, updateCart } =
-    useContext(ShopContext);
+  const { All_products, cart, removeFromCart, updateCart, isAuthenticated } =
+    useContext(ShopContext); // Assume isAuthenticated is provided by ShopContext
+  const history = useHistory();
 
   // Calculate the total price
   const totalPrice = All_products.reduce((total, product) => {
@@ -20,28 +19,17 @@ export const CartItems = () => {
     return total + quantity * parseFloat(price.replace(/,/g, ""));
   }, 0);
 
-  // Generate WhatsApp message link
+  // Generate WhatsApp link
   const generateWhatsAppLink = () => {
-    const cartDetails = All_products.filter((product) => cart[product.id])
-      .map((product) => {
-        const quantity = cart[product.id];
-        const price =
-          typeof product.new_price === "string"
-            ? product.new_price
-            : String(product.new_price);
-        return `${product.name} (x${quantity}) - ₦${(
-          parseFloat(price.replace(/,/g, "")) * quantity
-        ).toLocaleString()}`;
-      })
-      .join("\n");
-    const message = `I would like to buy the following items:\n\n${cartDetails}\n\nTotal: ₦${totalPrice.toLocaleString()}`;
+    return `https://wa.me/message/BPJEWHG2JCFDM1`; // Replace with the actual phone number
+  };
 
-    // Remove AI-enhanced message generation
-    // const enhancedMessage = generateEnhancedMessage(message);
-
-    return `https://wa.me/message/BPJEWHG2JCFDM1?text=${encodeURIComponent(
-      message
-    )}`;
+  const handleCheckout = () => {
+    if (!isAuthenticated) {
+      history.push("/login"); // Redirect to login page if not authenticated
+    } else {
+      window.open(generateWhatsAppLink(), "_blank");
+    }
   };
 
   return (
@@ -114,13 +102,7 @@ export const CartItems = () => {
               <h3>{totalPrice.toLocaleString()}</h3>
             </div>
           </div>
-          <a
-            href={generateWhatsAppLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button>Proceed to checkout</button>
-          </a>
+          <button onClick={handleCheckout}>Proceed to checkout</button>
         </div>
       </div>
     </div>

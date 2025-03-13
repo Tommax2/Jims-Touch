@@ -18,6 +18,11 @@ export const Navbar = () => {
         <img src={shop} alt="shop" />
         <h1>JIMS</h1>
       </div>
+      <BiMenu
+        className="nav-toggle-icon"
+        onClick={() => setMenuActive(!menuActive)}
+      />{" "}
+      {/* Moving the toggle icon */}
       <ul className={`nav-menu ${menuActive ? "active" : ""}`}>
         <li
           onMouseEnter={() => setDropdown(true)}
@@ -67,20 +72,26 @@ export const Navbar = () => {
         {/* Removed the main menu item for Hair accessories */}
       </ul>
       <div className="nav-login-cart">
-        {localStorage.getItem('auth-token')?<button onClick={()=>{localStorage.removeItem('auth-token');window.location.replace('/')}} >Logout</button>: <Link to="/login">
-          <button>Login</button>
-        </Link>}
-       
+        {localStorage.getItem("auth-token") ? (
+          <button
+            onClick={() => {
+              localStorage.removeItem("auth-token");
+              window.location.replace("/");
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        )}
+
         <Link to="/cart">
           <img src={cart} alt="cart" />
         </Link>
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
-      <BiMenu
-        className="nav-toggle-icon"
-        onClick={() => setMenuActive(!menuActive)}
-      />{" "}
-      {/* Adding the toggle icon */}
     </div>
   );
 };

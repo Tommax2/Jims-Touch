@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Offers.css";
 
 export const Offers = () => {
@@ -12,7 +13,9 @@ export const Offers = () => {
             Get 20% off on all Hair and Jim's Touch products. Limited time
             offer!
           </p>
-          <button className="offer-button">Shop Now</button>
+          <Link to="/login">
+            <button className="offer-button">Shop Now</button>
+          </Link>
         </div>
       </div>
     </div>
