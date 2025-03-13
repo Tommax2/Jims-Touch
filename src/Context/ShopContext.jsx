@@ -10,8 +10,10 @@ export const ShopContextProvider = ({ children }) => {
     return savedCart ? JSON.parse(savedCart) : {};
   });
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
-    fetch("http://localhost:4000/allproduct") // Ensure the URL is correct
+    fetch(`${backendUrl}/allproduct`) // Ensure the URL is correct
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -52,7 +54,7 @@ export const ShopContextProvider = ({ children }) => {
       [itemId]: (prevCart[itemId] || 0) + 1,
     }));
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:4000/addtocart", {
+      fetch(`${backendUrl}/addtocart`, {
         method: "POST",
         headers: {
           Accept: "application/json",

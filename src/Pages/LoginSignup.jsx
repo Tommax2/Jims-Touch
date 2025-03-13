@@ -8,6 +8,7 @@ export const LoginSignup = () => {
     password: "",
     email: "",
   });
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,7 +16,7 @@ export const LoginSignup = () => {
 
   const login = async () => {
     console.log("Login Function Executed", formData);
-    await fetch("http://localhost:4000/login", {
+    await fetch(`${backendUrl}/login`, {
       // Changed endpoint to /login
       method: "POST",
       headers: {
@@ -37,7 +38,7 @@ export const LoginSignup = () => {
 
   const signup = async () => {
     console.log("Signup Function Executed", formData);
-    await fetch("http://localhost:4000/signup", {
+    await fetch(`${backendUrl}/signup`, {
       method: "POST",
       headers: {
         Accept: "application/form-data",

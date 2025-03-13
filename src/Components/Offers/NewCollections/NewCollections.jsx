@@ -5,9 +5,11 @@ import { Item } from "../../Items/Item";
 
 export const NewCollections = () => {
   const [newCollection, setNewCollection] = useState([]);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
+
 
   useEffect(() => {
-    fetch("http://localhost:4000/newcollections")
+    fetch(`${backendUrl}/newcollections`)
       .then((response) => response.json()) // Fixed error here
       .then((data) => setNewCollection(data));
   }, []);
