@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Css/LoginSignup.css";
 
 export const LoginSignup = () => {
@@ -8,7 +8,16 @@ export const LoginSignup = () => {
     password: "",
     email: "",
   });
-  const backendUrl = import.meta.env.VITE_BACKEND_URL
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+  useEffect(() => {
+    // Check if the user is already logged in
+    const token = localStorage.getItem("auth-token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -56,6 +65,17 @@ export const LoginSignup = () => {
         }
       });
   };
+
+  if (isLoggedIn) {
+    return (
+      <div className="loginsignup">
+        <h1>You are already logged in!</h1>
+        <button onClick={() => window.location.replace("/")}>
+          Go to Homepage
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="loginsignup">
