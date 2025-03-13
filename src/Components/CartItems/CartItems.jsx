@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom"; // Import useHistory for redirection
+import { useNavigate } from "react-router-dom"; // Updated to useNavigate
 import "./Cartitems.css";
 import removeicon from "../../assets/removeIcon.jpg";
 import { ShopContext } from "../../Context/ShopContext";
@@ -7,7 +7,7 @@ import { ShopContext } from "../../Context/ShopContext";
 export const CartItems = () => {
   const { All_products, cart, removeFromCart, updateCart, isAuthenticated } =
     useContext(ShopContext); // Assume isAuthenticated is provided by ShopContext
-  const history = useHistory();
+  const navigate = useNavigate(); // Updated to useNavigate
 
   // Calculate the total price
   const totalPrice = All_products.reduce((total, product) => {
@@ -26,7 +26,7 @@ export const CartItems = () => {
 
   const handleCheckout = () => {
     if (!isAuthenticated) {
-      history.push("/login"); // Redirect to login page if not authenticated
+      navigate("/login"); // Updated to use navigate
     } else {
       window.open(generateWhatsAppLink(), "_blank");
     }
@@ -51,7 +51,11 @@ export const CartItems = () => {
           return (
             <div key={e.id}>
               <div className="cartitems-format">
-                <img src={e.image} alt="" className="carticon-product-icon" />
+                <img
+                  src={e.image}
+                  alt={`Product image of ${e.name}`} // Added meaningful alt text
+                  className="carticon-product-icon"
+                />
                 <p>{e.name}</p>
                 <p>{e.new_price}</p>
                 <button
@@ -74,7 +78,7 @@ export const CartItems = () => {
                   onClick={() => {
                     removeFromCart(e.id);
                   }}
-                  alt=""
+                  alt="Remove item from cart" // Added meaningful alt text
                 />
               </div>
               <hr />
