@@ -25,10 +25,10 @@ export const CartItems = () => {
   };
 
   const handleCheckout = () => {
-    if (!isAuthenticated) {
-      navigate("/login"); // Updated to use navigate
-    } else {
+    if (isAuthenticated) {
       window.open(generateWhatsAppLink(), "_blank");
+    } else {
+      navigate("/login");
     }
   };
 
