@@ -1,20 +1,12 @@
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext"; // Ensure this path is correct
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Offers.css";
 
 export const Offers = () => {
   const navigate = useNavigate();
-  const authContext = useContext(AuthContext); // Retrieve the context
-
-  const isLoggedIn = authContext?.isLoggedIn ?? false; // Safely access isLoggedIn
 
   const handleShopNowClick = () => {
-    if (isLoggedIn) {
-      navigate("/shop"); // Redirect to shop page if logged in
-    } else {
-      navigate("/login"); // Redirect to login page if not logged in
-    }
+    navigate("/shop"); // Always redirect to shop page
   };
 
   return (
