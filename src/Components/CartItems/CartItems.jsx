@@ -26,7 +26,7 @@ export const CartItems = () => {
 
   const handleCheckout = () => {
     if (isAuthenticated) {
-      window.open(generateWhatsAppLink(), "_blank");
+      window.location.href = generateWhatsAppLink(); // Directly navigate to WhatsApp
     } else {
       navigate("/login");
     }
