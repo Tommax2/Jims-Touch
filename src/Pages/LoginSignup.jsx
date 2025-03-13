@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Css/LoginSignup.css";
-import { ShopContext } from "../../Context/ShopContext"; // Update path if needed
+import { ShopContext } from "../Context/ShopContext"; // Update path if needed
 
 export const LoginSignup = () => {
   const [state, setState] = useState("Login");
