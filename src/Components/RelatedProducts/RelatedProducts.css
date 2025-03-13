@@ -58,6 +58,9 @@
     flex-direction: column;
     align-items: center;
   }
+  .related-products-item img {
+    height: 150px; /* Increase image height */
+  }
 }
 
 @media (max-width: 576px) {
@@ -67,9 +70,12 @@
   .related-products-item {
     gap: 10px;
   }
+  .related-products-item img {
+    height: 120px; /* Increase image height */
+  }
 }
 
-@media (max-width: 310px) {
+@media (max-width: 370px) {
   .relatedproduct {
     padding: 2px;
   }
@@ -78,5 +84,8 @@
   }
   .related-products-item {
     gap: 5px;
+  }
+  .related-products-item img {
+    height: 100px; /* Increase image height */
   }
 }
