@@ -7,13 +7,13 @@
   color: #fff;
   animation: fadeIn 2s ease-in-out;
   font-weight: bold;
-  height: 50vh; /* Adjusted height */
-  margin: 10px; /* Added margin */
+  height: 50vh;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px; /* Added spacing between elements */
+  gap: 10px;
 }
 
 .executive-offer h2 {
@@ -43,7 +43,6 @@
   background-color: #ff6347;
 }
 
-/* Keyframes for animations */
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
@@ -55,32 +54,10 @@
   60% { transform: translateY(-5px); }
 }
 
-/* Media Queries */
-@media (max-width: 1200px) {
-  .offers {
-    /* ...existing styles... */
-  }
-  .offers-right {
-    /* ...existing styles... */
-  }
-  .executive-offer {
-    /* ...existing styles... */
-  }
-  .offer-button {
-    /* ...existing styles... */
-  }
-}
-
 @media (max-width: 768px) {
-  .offers {
-    /* ...existing styles... */
-  }
-  .offers-right {
-    /* ...existing styles... */
-  }
   .executive-offer {
     padding: 15px;
-    height: auto; /* Adjust height for smaller screens */
+    height: auto;
   }
 
   .executive-offer h2 {
@@ -98,15 +75,9 @@
 }
 
 @media (max-width: 480px) {
-  .offers {
-    /* ...existing styles... */
-  }
-  .offers-right {
-    /* ...existing styles... */
-  }
   .executive-offer {
     padding: 10px;
-    height: auto; /* Adjust height for smaller screens */
+    height: auto;
   }
 
   .executive-offer h2 {
@@ -126,7 +97,7 @@
 @media (max-width: 310px) {
   .executive-offer {
     padding: 5px;
-    height: auto; /* Adjust height for smaller screens */
+    height: auto;
   }
 
   .executive-offer h2 {
