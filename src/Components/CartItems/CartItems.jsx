@@ -5,8 +5,13 @@ import removeicon from "../../assets/removeIcon.jpg";
 import { ShopContext } from "../../Context/ShopContext";
 
 export const CartItems = () => {
-  const { All_products, cart, removeFromCart, updateCart, isAuthenticated } =
-    useContext(ShopContext); // Assume isAuthenticated is provided by ShopContext
+  const {
+    All_products,
+    cart,
+    removeFromCart,
+    updateCart,
+    isAuthenticated = false, // Default to false if undefined or null
+  } = useContext(ShopContext); // Assume isAuthenticated is provided by ShopContext
   const navigate = useNavigate(); // Updated to useNavigate
 
   // Calculate the total price
@@ -25,15 +30,12 @@ export const CartItems = () => {
   };
 
   const handleCheckout = () => {
-    if (isAuthenticated === undefined || isAuthenticated === null) {
-      console.error("Authentication status is undefined or null.");
+    if (!isAuthenticated) {
+      console.warn("User is not authenticated. Redirecting to login.");
+      navigate("/login");
       return;
     }
-    if (isAuthenticated) {
-      window.location.href = generateWhatsAppLink(); // Directly navigate to WhatsApp
-    } else {
-      navigate("/login");
-    }
+    window.location.href = generateWhatsAppLink(); // Directly navigate to WhatsApp
   };
 
   return (
