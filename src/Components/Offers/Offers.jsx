@@ -1,11 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Offers.css";
 
 export const Offers = () => {
+  const navigate = useNavigate();
+  const isLoggedIn = false; // Replace with actual login status from context or state
+
+  const handleShopNowClick = () => {
+    if (isLoggedIn) {
+      navigate("/shop"); // Redirect to shop page if logged in
+    } else {
+      navigate("/login"); // Redirect to login page if not logged in
+    }
+  };
+
   return (
     <div className="offers">
-      {/* Removed the "offers-left" div */}
       <div className="offers-right">
         <div className="executive-offer">
           <h2>Exclusive Offer from Hair and Jim's Touch</h2>
@@ -13,9 +23,9 @@ export const Offers = () => {
             Get 20% off on all Hair and Jim's Touch products. Limited time
             offer!
           </p>
-          <Link to="/login">
-            <button className="offer-button">Shop Now</button>
-          </Link>
+          <button className="offer-button" onClick={handleShopNowClick}>
+            Shop Now
+          </button>
         </div>
       </div>
     </div>
