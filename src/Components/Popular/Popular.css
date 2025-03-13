@@ -22,8 +22,10 @@
 .popular-items img {
     width: 360px;
     max-width: 600px;
+    height: auto; /* Ensure height is auto */
     box-sizing: border-box;
     padding: 0 10px;
+    border-radius: 0; /* No rounded edges by default */
 }
 
 .popular-item {
@@ -44,6 +46,10 @@
     .popular-items {
         flex-direction: column;
         gap: 15px;
+    }
+    .popular-items img {
+        height: 300px; /* Increase height for smaller screens */
+        border-radius: 10px; /* Add rounded edges */
     }
 }
 
