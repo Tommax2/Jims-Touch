@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext"; // Import the authentication context
+import { AuthContext } from "../../context/AuthContext"; // Ensure this path is correct
 import "./Offers.css";
 
 export const Offers = () => {
